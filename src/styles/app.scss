@@ -1,0 +1,261 @@
+// Variables
+$black: #313131;
+$primary: #3de9bd;
+$secondary: #49a09d;
+$transition: all .25s cubic-bezier(0.010, 0.840, 0.470, 0.490);
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;800&display=swap');
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: "Raleway", sans-serif;
+    color: $black;
+
+    @media screen and (min-width: 1024px) {
+        overflow: hidden;
+    }
+}
+
+#root {
+    display: flex;
+
+    @media screen and (max-width: 1023px) {
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    @media screen and (min-width: 1024px) {
+        flex-direction: row;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 1023px) {
+        height: 50px;
+        border-bottom: 1px solid rgba($black,0.05);
+        box-shadow: 10px 0 10px rgba($black,0.05);
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 100px;
+        height: 100vh;
+        border-right: 1px solid rgba($black,0.05);
+        box-shadow: 0 10px 10px rgba($black,0.05);
+    }
+
+    & > h1 {
+        @media screen and (max-width: 1023px) {
+            line-height: 50px;
+        }
+
+        @media screen and (min-width: 1024px) {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            line-height: 100px; 
+        }
+    }
+}
+
+.main {
+    width: 100%;
+
+    @media screen and (max-width: 1023px) {
+        height: 100%;
+    }
+}
+
+.section {
+    display: flex;
+
+    &:first-child {
+        @media screen and (max-width: 1023px) {
+            flex-direction: column;
+        }
+    
+        @media screen and (min-width: 1024px) {
+            flex-direction: row;
+            height: 65%;
+        }
+    }
+
+    &:last-child {
+        @media screen and (max-width: 1023px) {
+            flex-direction: column;
+        }
+    
+        @media screen and (min-width: 1024px) {
+            flex-direction: row;
+            justify-content: flex-end;
+            height: 35%;
+        }
+    }
+}
+
+.text,
+.image-large {
+    @media screen and (min-width: 1024px) {
+        width: 50%;
+    }
+}
+
+.card,
+.image-small {
+    @media screen and (min-width: 1024px) {
+        width: 25%;
+    }
+}
+
+.text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 1023px) {
+        padding: 50px 0;
+    }
+
+    & > h2 {
+        font-weight: 800;
+
+        @media screen and (max-width: 1023px) {
+            width: 70%;
+            font-size: 35px;
+            text-align: center;
+        }
+
+        @media screen and (min-width: 1024px) {
+            width: 80%;
+            font-size: 60px;
+        }
+        
+    }
+}
+
+.image-large,
+.image-small {
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: 1023px) {
+        width: 100%;
+        padding-bottom: 100%;
+    }
+}
+
+.image-large,
+.image-small {
+    & > .overlay,
+    & > .image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: bottom center;
+    }
+
+    & > .overlay {
+        background-color: $primary;
+    }
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 50px;
+    transition: $transition;
+
+    &__header {
+        & > .category {
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b4b4b4;
+            margin-bottom: 10px;
+            transition: $transition;
+        }
+
+        & > h3 {
+            font-size: 30px;
+
+            @media screen and (max-width: 1023px) {
+                margin-bottom: 100px;
+            }
+        }
+    }
+
+    &__cta {
+        position: relative;
+        font-weight: 600;
+        padding-left: 70px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 14px;
+        color: $black;
+        transition: $transition;
+
+        &::before {
+            content: '';
+            position: absolute; 
+            top: 50%;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: $primary;
+            transition: $transition;
+        }
+    }
+
+    & > a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: transparent;
+    }
+
+    &:hover {
+        @media screen and (min-width: 1024px) {
+            transform: scale(1.1);
+        }
+
+        background: #49a09d;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, $primary, #49a09d);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, $primary, #49a09d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+        & > .card__cta {
+            padding-left: 100px;
+
+            &::before {
+                width: 90px;
+                background-color: $black;
+            }
+        }
+
+        & > .card__header > .category {
+            color: $black;
+        }
+    }
+}
+
+.text-primary {
+    color: $primary; 
+}
