@@ -11,7 +11,12 @@
       alt="LinkedIn"
     />
   </a>
-  <a href="https://app.daily.dev/shinobi8894"><img src="https://api.daily.dev/devcards/v2/YV1FrRVcxM2Rz0beyhlCp.png?r=0gs" width="256" alt="Tadashi Amano's Dev Card"/></a>
+  <div align="right">
+    <a href="https://app.daily.dev/shinobi8894">
+        <img src="https://api.daily.dev/devcards/v2/YV1FrRVcxM2Rz0beyhlCp.png?r=0gs" width="256" alt="Tadashi Amano's Dev Card"/>
+    </a>
+</div>
+
 </div>
 
 # Animation Landing Page
